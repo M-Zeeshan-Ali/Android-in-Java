@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin_Dashboard">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/purple_200"
+        app:title="Admin Dashboard"
+        app:titleTextColor="@color/black" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btncity"
+        android:layout_width="197dp"
+        android:layout_height="58dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="122dp"
+        android:background="@color/purple_200"
+        android:text="city"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnbus"
+        android:layout_width="197dp"
+        android:layout_height="58dp"
+        android:layout_below="@+id/btncity"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="118dp"
+        android:background="@color/purple_200"
+        android:text="Bus Deatils"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnroute"
+        android:layout_width="197dp"
+        android:layout_height="58dp"
+        android:layout_below="@+id/btnbus"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="119dp"
+        android:background="@color/purple_200"
+        android:text="Route"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnuser"
+        android:layout_width="197dp"
+        android:layout_height="58dp"
+        android:layout_below="@+id/btnroute"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="98dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="115dp"
+        android:background="@color/purple_200"
+        android:text="User Deatils"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnlogout"
+        android:layout_width="197dp"
+        android:layout_height="58dp"
+        android:layout_below="@+id/btnroute"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="98dp"
+        android:layout_marginTop="86dp"
+        android:layout_marginEnd="115dp"
+        android:background="@color/purple_200"
+        android:text="LOG OUT"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

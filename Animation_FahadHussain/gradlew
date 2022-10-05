@@ -1,0 +1,158 @@
+/*
+ * Copyright (C) 2014 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package androidx.appcompat.widget;
+
+import static androidx.annotation.RestrictTo.Scope.LIBRARY;
+import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;
+
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import android.util.AttributeSet;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.accessibility.AccessibilityEvent;
+import android.view.accessibility.AccessibilityNodeInfo;
+
+import androidx.annotation.IntDef;
+import androidx.annotation.RestrictTo;
+import androidx.appcompat.R;
+import androidx.core.view.GravityCompat;
+import androidx.core.view.ViewCompat;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+/**
+ * A Layout that arranges its children in a single column or a single row. The direction of
+ * the row can be set by calling {@link #setOrientation(int) setOrientation()}.
+ * You can also specify gravity, which specifies the alignment of all the child elements by
+ * calling {@link #setGravity(int) setGravity()} or specify that specific children
+ * grow to fill up any remaining space in the layout by setting the <em>weight</em> member of
+ * {@link LinearLayoutCompat.LayoutParams LinearLayoutCompat.LayoutParams}.
+ * The default orientation is horizontal.
+ *
+ * <p>See the <a href="{@docRoot}guide/topics/ui/layout/linear.html">Linear Layout</a>
+ * guide.</p>
+ *
+ * <p>
+ * Also see {@link LinearLayoutCompat.LayoutParams} for layout attributes </p>
+ */
+public class LinearLayoutCompat extends ViewGroup {
+    /** @hide */
+    @RestrictTo(LIBRARY_GROUP)
+    @IntDef({HORIZONTAL, VERTICAL})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface OrientationMode {}
+
+    public static final int HORIZONTAL = 0;
+    public static final int VERTICAL = 1;
+
+    /** @hide */
+    @RestrictTo(LIBRARY_GROUP)
+    @IntDef(flag = true,
+            value = {
+                    SHOW_DIVIDER_NONE,
+                    SHOW_DIVIDER_BEGINNING,
+                    SHOW_DIVIDER_MIDDLE,
+                    SHOW_DIVIDER_END
+            })
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface DividerMode {}
+
+    /**
+     * Don't show any dividers.
+     */
+    public static final int SHOW_DIVIDER_NONE = 0;
+    /**
+     * Show a divider at the beginning of the group.
+     */
+    public static final int SHOW_DIVIDER_BEGINNING = 1;
+    /**
+     * Show dividers between each item in the group.
+     */
+    public static final int SHOW_DIVIDER_MIDDLE = 2;
+    /**
+     * Show a divider at the end of the group.
+     */
+    public static final int SHOW_DIVIDER_END = 4;
+
+    /**
+     * Whether the children of this layout are baseline aligned.  Only applicable
+     * if {@link #mOrientation} is horizontal.
+     */
+    private boolean mBaselineAligned = true;
+
+    /**
+     * If this layout is part of another layout that is baseline aligned,
+     * use the child at this index as the baseline.
+     *
+     * Note: this is orthogonal to {@link #mBaselineAligned}, which is concerned
+     * with whether the children of this layout are baseline aligned.
+     */
+    private int mBaselineAlignedChildIndex = -1;
+
+    /**
+     * The additional offset to the child's baseline.
+     * We'll calculate the baseline of this layout as we measure vertically; for
+     * horizontal linear layouts, the offset of 0 is appropriate.
+     */
+    private int mBaselineChildTop = 0;
+
+    private int mOrientation;
+
+    private int mGravity = GravityCompat.START | Gravity.TOP;
+
+    private int mTotalLength;
+
+    private float mWeightSum;
+
+    private boolean mUseLargestChild;
+
+    private int[] mMaxAscent;
+    private int[] mMaxDescent;
+
+    private static final int VERTICAL_GRAVITY_COUNT = 4;
+
+    private static final int INDEX_CENTER_VERTICAL = 0;
+    private static final int INDEX_TOP = 1;
+    private static final int INDEX_BOTTOM = 2;
+    private static final int INDEX_FILL = 3;
+
+    private Drawable mDivider;
+    private int mDividerWidth;
+    private int mDividerHeight;
+    private int mShowDividers;
+    private int mDividerPadding;
+
+    public LinearLayoutCompat(Context context) {
+        this(context, null);
+    }
+
+    public LinearLayoutCompat(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public LinearLayoutCompat(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+
+        final TintTypedArray a = TintTypedArray.obtainStyledAttributes(context, attrs,
+                R.styleable.LinearLayoutCompat, defStyleAttr, 0);
+
+        int index = a.getInt(R.styleable.LinearL

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.testphase_loginregistration">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TestPhase_LoginRegistration"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".User_Dashboard"
+            android:exported="false" />
+        <activity
+            android:name=".City_Details"
+            android:exported="false" />
+        <activity
+            android:name=".User_Details"
+            android:exported="false" />
+        <activity
+            android:name=".Route_Details"
+            android:exported="false" />
+        <activity
+            android:name=".Bus_Details"
+            android:exported="false" />
+        <activity
+            android:name=".Admin_Dashboard"
+            android:exported="true" />
+        <activity
+            android:name=".Panel_Window"
+            android:exported="true" />
+        <activity
+            android:name=".User_Login"
+            android:exported="true" />
+        <activity
+            android:name=".User_Register"
+            android:exported="true" />
+        <activity
+            android:name=".Admin_Login"
+            android:exported="true" />
+        <activity
+            android:name=".Admin_Register"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

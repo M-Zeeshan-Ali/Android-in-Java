@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".citydetail">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/yellow"
+        app:titleTextColor="@color/black"
+
+        />
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/city"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edittext_custom"
+        android:hint="City"
+        android:paddingLeft="15dp"
+        android:textColorHint="@color/black" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/addcity"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/city"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/custom_btn"
+        android:text="Add City"
+        android:textColor="@color/black" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/addcity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
+
+
+
+</RelativeLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:id="@+id/city"/>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:id="@+id/bus"
+            android:layout_below="@+id/city"/>
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:id="@+id/to_address"
+            android:layout_below="@+id/bus"/>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/end_address"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/to_address"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/search_bus"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/end_address"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@color/purple_200"
+            android:text="Search Bus"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/view_bus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/search_bus"
+            android:layout_marginTop="20dp" />
+    </RelativeLayout>
+
+</ScrollView>

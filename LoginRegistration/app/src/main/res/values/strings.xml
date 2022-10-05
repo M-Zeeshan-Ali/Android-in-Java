@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">LoginRegistration</string>
+    <string name="prefLoginState">loginstate</string>
+</resources>
